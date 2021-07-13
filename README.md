@@ -11,4 +11,4 @@ Please cite these papers in your publications if it helps your research:
 
 ## License
 
-The PepperKinematics code is freely available for free non-commercial use or academic research, and may be redistributed under these conditions. See [license](../PepperKinematics/master/LICENSE) for details.
+The PepperKinematics code is freely available for free non-commercial use or academic research, and may be redistributed under these conditions. See [license](/LICENSE) for details.
