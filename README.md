@@ -3,6 +3,7 @@ Forward and inverse kinematics for the robot Pepper and a dataset of angle combi
 - Analytical Solution of Pepper's Inverse Kinematics for a Pose Matching Imitation System
 
 ## Requirements
+- Python 2.7 (numpy)
 
 
 ## Citation
