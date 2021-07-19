@@ -55,7 +55,7 @@ def get_arm_partial_angles(ex, ey, ez, arm):
         l2 = 149.74
         l5 = 15.0 
 
-    # theta2
+    # ShoulderRoll or theta2 
     t2_temp = arcsin((ey - l2) / sqrt(l4**2 + l5**2)) - arctan(l5/l4)
 
     if arm == 'right':
@@ -65,7 +65,7 @@ def get_arm_partial_angles(ex, ey, ez, arm):
             shoulderRoll = -pi - arcsin((ey - l2) / sqrt(l4**2 + l5**2)) - arctan(l5/l4)
             if shoulderRoll < -1.5630:
                 shoulderRoll = t2_temp
-
+        # check if solution is within Pepper's range
         if shoulderRoll.imag != 0 or shoulderRoll.real < -1.58 or shoulderRoll.real >= -0.0087:
             shoulderRoll = -0.0087
 
@@ -76,15 +76,15 @@ def get_arm_partial_angles(ex, ey, ez, arm):
             shoulderRoll = pi - arcsin((ey - l2) / sqrt(l4**2 + l5**2)) - arctan(l5/l4)
             if shoulderRoll > 1.5630:
                 shoulderRoll = t2_temp
-
+        # check if solution is within Pepper's range
         if shoulderRoll.imag != 0 or shoulderRoll.real > 1.58 or shoulderRoll.real <= 0.0087:
             shoulderRoll = 0.0087
 
-    # theta1
+    # ShoulderPitch or theta1
     n = l4*cos(shoulderRoll) - l5*sin(shoulderRoll)
     t1_1 = arctan2(ex-l1, ez-l3) - arctan2(sqrt((ex-l1)**2 + (ez-l3)**2 - l6**2), l6)
     t1_2 = arctan2(l6*(ex-l1) - n*(ez-l3), l6*(ez-l3) + n*(ex-l1))
-
+    # check if solution is within Pepper's range
     if t1_1.imag != 0 or t1_1.real < -2.1 or t1_1.real > 2.1:
         t1_1 = nan
 
@@ -93,7 +93,7 @@ def get_arm_partial_angles(ex, ey, ez, arm):
 
     sol1 = get_elbow_position(t1_1, shoulderRoll, arm)
     sol2 = get_elbow_position(t1_2, shoulderRoll, arm)
-
+    # check which of the solutions is closer to the position of the elbow 
     dist1 = sqrt((sol1[0]-ex)**2 + (sol1[1]-ey)**2 + (sol1[2]-ez)**2)
     dist2 = sqrt((sol2[0]-ex)**2 + (sol2[1]-ey)**2 + (sol2[2]-ez)**2)
 
@@ -134,6 +134,7 @@ def calculate_theta4(t1, t2, px, py, pz, arm):
         elif arm == 'left':
             theta4 = -arccos(term1)
 
+    # check if solution is within Pepper's range
     if arm == 'right':
         if theta4.imag != 0.0 or theta4 > 1.58 or theta4 < 0.0087 or isnan(theta4):
             theta4 = 0.0087
@@ -179,19 +180,21 @@ def get_torso_angles(px, py, pz):
     a2 = 268.0
     a3 = 79.0
 
-    # theta3
+    # HipRoll or theta3
     hipRoll = arcsin(py/l4)
 
     n = l4*cos(hipRoll) + a3
-    # theta2
     term1 = (px**2 + pz**2 - n**2 - l3**2 - a2**2) / (2*a2 * sqrt(l3**2 + n**2))
     if term1 > 1.0:
         hipPitch = 0.0
+        # estimate the KneePitch from HipPitch 
         kneePitch = pairs[hipPitch]
     else:
+        # HipPitch or theta2
         t2_1 = arcsin(term1) - arctan2(n,l3)
         t2_2 = pi - arcsin(term1) - arctan2(n,l3)
 
+        # check if solution is within Pepper's range
         if t2_1.imag != 0 or t2_1.real < -1.04 or t2_1.real > 1.04:
             t2_1 = nan
 
@@ -200,21 +203,24 @@ def get_torso_angles(px, py, pz):
 
         sol1 = get_torso_position(t2_1, hipRoll)
         sol2 = get_torso_position(t2_2, hipRoll)
-
+        # check which of the solutions is closer to the position of the torso 
         dist1 = sqrt((sol1[0]-px)**2 + (sol1[1]-py)**2 + (sol1[2]-pz)**2)
         dist2 = sqrt((sol2[0]-px)**2 + (sol2[1]-py)**2 + (sol2[2]-pz)**2)
 
         if isnan(dist1) and isnan(dist2):
             hipPitch = 0.0
+            # estimate the KneePitch from HipPitch 
             kneePitch = pairs[hipPitch]
         elif dist1 < dist2 or isnan(dist2): 
             hipPitch = t2_1
             t2_rounded = round(t2_1,2)
+            # estimate the KneePitch from HipPitch 
             kneePitch = pairs[t2_rounded]
 
         elif dist1 > dist2 or isnan(dist1):
             hipPitch = t2_2
             t2_rounded = round(t2_2,2)
+            # estimate the KneePitch from HipPitch 
             kneePitch = pairs[t2_rounded]
 
 

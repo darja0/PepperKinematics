@@ -1,7 +1,7 @@
 import numpy as np
 
-####### Rotation Matrices -----------------------------------------------
-
+####### Rotation Matrices R_axis ---------------------------------------------------------------------------------
+# function computing the rotation matrix for the X axis for angle and dimension (dim) which default is 4
 def rx_calc(angle, dim=4):
 
     c, s = np.cos(angle), np.sin(angle)
@@ -12,7 +12,7 @@ def rx_calc(angle, dim=4):
 
     return Rx
 
-
+# function computing the rotation matrix for the Y axis for angle and dimension (dim) which default is 4
 def ry_calc(angle, dim=4):
 
     c, s = np.cos(angle), np.sin(angle)
@@ -23,7 +23,7 @@ def ry_calc(angle, dim=4):
 
     return Ry
 
-
+# function computing the rotation matrix for the Z axis for angle and dimension (dim) which default is 4
 def rz_calc(angle, dim=4):
 
     c, s = np.cos(angle), np.sin(angle)
@@ -35,12 +35,11 @@ def rz_calc(angle, dim=4):
     return Rz
 
 
-####### T_dh ------------------------------------------------------------------------------
-
+####### DH Transformation Matrix T_dh ------------------------------------------------------------------------------
+# function computing the transformation matrix using the DH parameters alpha, a, theta, and d
 def computeT_dh(alpha, a, theta, d):
 
     Tx, Tz = (np.identity(4), np.identity(4))
-
 
     Tx[0, 3] = a
     Tz[2, 3] = d
