@@ -8,7 +8,7 @@ Forward and inverse kinematics for the robot Pepper and a dataset of angle combi
 
 ## Citation
 
-Please cite these papers in your publications if it helps your research:
+Please cite the following paper in your publications if in your research you use the work published here:
 
 ```latex
 @inproceedings{stoeva2021,
