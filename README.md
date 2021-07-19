@@ -5,6 +5,17 @@ Forward and inverse kinematics for the robot Pepper and a dataset of angle combi
 ## Requirements
 - Python 2.7 (numpy)
 
+## Files Description
+
+`forward_kinematics.py`	        - functions for computing joint positions from joint angles
+
+`hip_knee_pairs.py`	  - dictonary for estimated values for the KneePitch and HipPitch relationship
+
+`inverse_kinematics.py`	        - functions for computing joint angles from joint positions
+
+`math_functions.py`     - functions for computing rotation and transformation matrices 
+
+
 
 ## Citation
 
