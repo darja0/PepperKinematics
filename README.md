@@ -8,11 +8,11 @@ Forward and inverse kinematics for the robot Pepper and a dataset of angle combi
 
 ## Files Description
 
-`forward_kinematics.py`	        - functions for computing end-effector positions from joint angles
+`forward_kinematics.py`	        - functions for computing end-effector positions from joint angles for the head, arms, and torso
 
 `hip_knee_pairs.py`	  - dictionary for estimated values for the KneePitch and HipPitch relationship
 
-`inverse_kinematics.py`	        - functions for computing joint angles from end-effector positions
+`inverse_kinematics.py`	        - functions for computing joint angles from end-effector positions for the head, arms, and torso
 
 `math_functions.py`     - functions for computing rotation and transformation matrices 
 
