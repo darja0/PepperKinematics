@@ -20,6 +20,19 @@ The code included in this repository includes functions that calculate the FK an
 
 `main.py` - main file which executes motion command for each body chain (head, arms, torso) as an example for using the functions from the inverse and forward kinematics 
 
+## Example Code
+
+To run the example code in the `main.py`, which uses the functions derived from the IK solutions, use this command in the terminal:
+
+```
+python main.py "robot-ip-address"
+```
+
+example:
+
+```
+python main.py "127.0.0.1"
+```
 
 
 ## Citation
