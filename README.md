@@ -25,6 +25,7 @@ The code included in this repository includes functions that calculate the FK an
 To run the example code in the `main.py`, which uses the functions derived from the IK solutions, use this command in the terminal:
 
 ```
+cd PepperKinematics
 python main.py "robot-ip-address"
 ```
 
