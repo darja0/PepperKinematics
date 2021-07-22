@@ -50,5 +50,5 @@ Please cite the following paper in your publications if in your research you use
 ```
 
 ## License
-
+Attribution-NonCommercial-ShareAlike 4.0 International  ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
 The PepperKinematics code is freely available for free non-commercial use or academic research, and may be redistributed under these conditions. See [license](/LICENSE) for details.
