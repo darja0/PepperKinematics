@@ -26,13 +26,13 @@ To run the example code in the `main.py`, which uses the functions derived from 
 
 ```
 cd PepperKinematics
-python main.py "robot-ip-address"
+python main.py "robot-ip-address" "port"
 ```
 
 example:
 
 ```
-python main.py "127.0.0.1"
+python main.py "127.0.0.1" "9559"
 ```
 
 
