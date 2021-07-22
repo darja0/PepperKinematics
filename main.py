@@ -1,10 +1,12 @@
 from naoqi import ALProxy
 import time
+import sys
 from inverse_kinematics import get_head_angles, get_arm_all_angles, get_torso_angles
 
-IP = '127.0.0.1'
+IP = sys.argv[1]
+PORT = int(sys.argv[2])
 
-motion = ALProxy("ALMotion", IP, 9559)
+motion = ALProxy("ALMotion", IP, PORT)
 
 # fraction of the maximum speed at which it moves 
 fractionMaxSpeed = 0.2
@@ -81,5 +83,5 @@ except BaseException, err:
 time.sleep(2)
 
 # send Pepper to Standing posture 
-postureProxy = ALProxy("ALRobotPosture", IP, 9559)
+postureProxy = ALProxy("ALRobotPosture", IP, PORT)
 postureProxy.goToPosture("Stand", 0.4)
