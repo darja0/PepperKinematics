@@ -1,6 +1,6 @@
 # PepperKinematics
 Forward (FK) and inverse (IK) kinematics for the robot Pepper and a dataset of angle combinations and the corresponding end effector positions of both virtual and physical robot. The method is explained in more detailed in the following paper: 
-- Analytical Solution of Pepper's Inverse Kinematics for a Pose Matching Imitation System
+- D. Stoeva, H. A. Frijns, M. Gelautz and O. Schürer, "Analytical Solution of Pepper’s Inverse Kinematics for a Pose Matching Imitation System," _2021 30th IEEE International Conference on Robot & Human Interactive Communication (RO-MAN)_, 2021, pp. 167-174, doi: 10.1109/RO-MAN50785.2021.9515480.
 
 ## Requirements
 - Python 2.7 (numpy)
@@ -43,12 +43,15 @@ Please cite the following paper in your publications if in your research you use
 ```latex
 @inproceedings{stoeva2021,
   title={Analytical Solution of Pepper's Inverse Kinematics for a Pose Matching Imitation System},
+  booktitle={2021 30th IEEE International Conference on Robot   Human Interactive Communication (RO-MAN)}, 
   author={Stoeva, Darja and Frijns, Helena Anna and Gelautz, Margrit and Sch{\"u}rer, Oliver},
   booktitle={RO-MAN},
+  pages={167-174},
+  doi={10.1109/RO-MAN50785.2021.9515480},
   year={2021}
 }
 ```
 
 ## License
 Attribution-NonCommercial-ShareAlike 4.0 International  ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
-The PepperKinematics code is freely available for free non-commercial use or academic research, and may be redistributed under these conditions. See [license](/LICENSE) for details.
+The PepperKinematics code is available for free non-commercial use or academic research, and may be redistributed under these conditions. See [license](/LICENSE) for details.
